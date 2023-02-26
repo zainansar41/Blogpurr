@@ -1,0 +1,200 @@
+.heading {
+    padding-top: 90px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 30px;
+}
+
+.writeBlogContent {
+    display: flex;
+    width: 100%;
+    min-height: 60vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.writeblog_div {
+    width: 75%;
+}
+
+.adblock {
+    width: 25%;
+}
+
+.heading_input,
+.image_input,
+.description_input,
+.keyword_input,
+.category_input {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 60px;
+    margin: 60px 30px;
+}
+.btn_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.label {
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+.text_editor {
+    margin: 60px 30px;
+}
+
+
+
+/* designing the inputs */
+form {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.input_form{
+    width: 300px;
+    border-radius: 6px;
+    padding-left: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    outline: none;
+    font-weight: 500;
+    transition: .5s ease-in-out;
+
+}
+
+.input_form:focus {
+    border-bottom: 1px solid black;
+}
+
+textarea {
+    width: 300px;
+    height: 100px;
+    border-radius: 6px;
+    padding-left: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    outline: 1px solid rgb(11, 11, 80);
+    resize: none;
+    padding: 8px;
+    font-weight: 500;
+}
+
+select {
+    width: 300px;
+    border-radius: 5px;
+    padding-left: 5px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.buttonDownload {
+    display: inline-block;
+    position: relative;
+    padding: 10px 25px;
+    background-color: #4CC713;
+    color: white;
+    font-family: sans-serif;
+    text-decoration: none;
+    font-size: 0.9em;
+    text-align: center;
+    text-indent: 15px;
+    border: none;
+    border-radius: 2em;
+    font-weight: bold;
+    width: 150px;
+}
+
+.buttonDownload:hover {
+    background-color: #1a60a2;
+    color: white;
+}
+
+.buttonDownload:before,
+.buttonDownload:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 52%;
+}
+
+.buttonDownload:before {
+    width: 10px;
+    height: 2px;
+    border-style: solid;
+    border-width: 0 2px 2px;
+}
+
+.buttonDownload:after {
+    width: 0;
+    height: 0;
+    margin-left: 3px;
+    margin-top: -7px;
+    border-style: solid;
+    border-width: 4px 4px 0 4px;
+    border-color: transparent;
+    border-top-color: inherit;
+    animation: downloadArrow 1s linear infinite;
+    animation-play-state: paused;
+}
+
+.buttonDownload:hover:before {
+    border-color: #bdd3ef;
+}
+
+.buttonDownload:hover:after {
+    border-top-color: #eff1f7;
+    animation-play-state: running;
+}
+
+@keyframes downloadArrow {
+    0% {
+        margin-top: -7px;
+        opacity: 1;
+    }
+
+    0.001% {
+        margin-top: -15px;
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        margin-top: 0;
+        opacity: 0.4;
+    }
+}
+
+
+@media (max-width:875px) {
+    .writeblog_div {
+        width: 65%;
+    }
+    
+    .adblock {
+        width: 35%;
+    }
+    
+}
+
+@media (max-width:725px) {
+    .writeBlogContent {
+        flex-direction: column-reverse;
+    }
+
+    .writeblog_div {
+        width: 100%;
+    }
+    
+    .adblock {
+        width: 100%;
+    }
+    
+}
