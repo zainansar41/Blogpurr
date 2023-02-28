@@ -56,6 +56,7 @@ export async function register(req, res) {
                             client.send(command)
                                 .then((result) => {
                                     const token = generateToken(email)
+
                                     res.status(201).send({ msg: "You has been register successfully", token });
                                 })
                                 .catch((error) => {
@@ -167,6 +168,6 @@ export async function updateUser(req, res) {
         }
     } catch (error) {
         console.error('Error updating user: ', error);
-        res.status(400).send({ error:"Internal Server Error try Later" });
+        res.status(400).send({ error: "Internal Server Error try Later" });
     }
 }

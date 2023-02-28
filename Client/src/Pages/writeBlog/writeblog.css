@@ -59,7 +59,7 @@ form {
     border-radius: 6px;
     padding-left: 5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: none;
+    border: 1px solid black;
     outline: none;
     font-weight: 500;
     transition: .5s ease-in-out;
@@ -67,7 +67,11 @@ form {
 }
 
 .input_form:focus {
+    border: none;
     border-bottom: 1px solid black;
+}
+.img_input{
+    border: none;
 }
 
 textarea {

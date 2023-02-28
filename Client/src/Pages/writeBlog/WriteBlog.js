@@ -2,28 +2,74 @@ import React, { useState, useRef, useMemo } from 'react'
 import './writeblog.css'
 import Navbar from '../../components/Navbar/Navbar'
 import JoditEditor from 'jodit-react';
+import { uploadBlog } from '../../helpers/verify';
+import convertBase64 from '../../helpers/convert';
+import { useNavigate } from 'react-router-dom';
+import { toast, Toaster } from 'react-hot-toast'
+
+
 
 export default function WriteBlog() {
     const editor = useRef(null);
+    const navigate = useNavigate();
 
     const [heading, setHeading] = useState('');
     const [description, setDescription] = useState('');
     const [keywords, setKeywords] = useState('');
-    const [image, setImage] = useState('');
+    const [image1, setImage1] = useState();
+    const [image2, setImage2] = useState();
     const [content, setContent] = useState('');
-    const [category, setCategory] = useState('Personal Blog');
+    const [category, setCategory] = useState('personal');
+    const [type, settype] = useState('post');
 
     const editorConfig = {
         height: 400
     };
 
+    const submitForm = async function (e) {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('heading', heading);
+        formData.append('description', description);
+        formData.append('keywords', keywords);
+        formData.append('category', category);
+        formData.append('type', type);
+        formData.append('content', content);
+        formData.append('image1', image1)
+        formData.append('image2', image2)
+
+    
+        const formBody = Object.fromEntries(formData)
+        let updatePromise = uploadBlog(formBody)
+            toast.promise(updatePromise,{
+                loading:"uploading! Do not close this tab ...!",
+                success:"Upload Successful.... ",
+                error:"Error in Updating"
+            })
+            updatePromise.then(result=>{
+                navigate('/profile')
+            })
+        
+        
+    }
+    
+    const onUpload1 = async e => {
+        const base64 = await convertBase64(e.target.files[0]);
+        setImage1(base64)
+    }
+    const onUpload2 = async e => {
+        const base64 = await convertBase64(e.target.files[0]);
+        setImage2(base64)
+    }
+
     return (
         <>
+            <Toaster containerStyle={{zIndex:99999}} position='top-center'></Toaster>
             <Navbar />
             <h1 className="heading">Write a Blog</h1>
             <div className="writeBlogContent">
                 <div className="writeblog_div">
-                    <form action="">
+                    <form action="" onSubmit={(e) => submitForm(e)}>
                         <div className="heading_input">
                             <label className='label' htmlFor="heading">Heading</label>
                             <input className='input_form' type="text" id='heading' name="heading" placeholder='Heading of your Blog' value={heading} onChange={(e) => { setHeading(e.target.value) }} required />
@@ -40,8 +86,12 @@ export default function WriteBlog() {
                             />
                         </div>
                         <div className="image_input">
-                            <label className='label' htmlFor="images">Add Images</label>
-                            <input className='input_form' type="file" multiple id="images" onChange={(e) => { setImage(e.target.value) }} />
+                            <label className='label' htmlFor="image1">Add Image 1</label>
+                            <input className='input_form img_input' type="file" multiple id="image1" onChange={onUpload1} />
+                        </div>
+                        <div className="image_input">
+                            <label className='label' htmlFor="image2">Add Image 1</label>
+                            <input className='input_form img_input' type="file" multiple id="image2" onChange={onUpload2} />
                         </div>
                         <div className="keyword_input">
                             <label className='label' htmlFor="keywords">Keywords</label>
@@ -59,6 +109,13 @@ export default function WriteBlog() {
                                 <option value="fashion">Fashion Blog</option>
                                 <option value="technology">Technology Blog</option>
                                 <option value="travel">Travel Blog</option>
+                            </select>
+                        </div>
+                        <div className="category_input">
+                            <label className='label' htmlFor="type">Content</label>
+                            <select id='type' name="type" value={type} onChange={(e) => { settype(e.target.value) }} required>
+                                <option value="post">Blog Post</option>
+                                <option value="review">Product Review</option>
                             </select>
                         </div>
 

@@ -3,6 +3,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 import bodyParser from 'body-parser';
 import router from './Routes/route.js'
+import './handlers/cloudinary.js'
 
 
 const port = 8000;
@@ -13,6 +14,7 @@ app.use(cors())
 app.use(morgan('tiny'))
 app.disable('x-powered-by')
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
     res.send("Home Get request")

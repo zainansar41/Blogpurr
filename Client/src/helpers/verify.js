@@ -29,12 +29,37 @@ export async function registerUser(credentials) {
   }
 }
 
-export async function updateProfile(credentials){
+export async function updateProfile(credentials) {
   try {
     console.log(credentials);
     const token = localStorage.getItem('YourToken')
-    const {msg} = await axios.put('/updateUser', credentials ,{ headers: { "authorization": `Bearer ${token}` } })
+    const { msg } = await axios.put('/updateUser', credentials, { headers: { "authorization": `Bearer ${token}` } })
     return Promise.resolve(msg)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
+
+export async function uploadBlog(credentials) {
+  try {
+    console.log(credentials);
+
+    const token = localStorage.getItem('YourToken')
+    const response = await axios.post('/addBlog', credentials, { headers: { "authorization": `Bearer ${token}` } })
+    return Promise.resolve(response.data)
+
+
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
+export async function fetchBlog() {
+  try {
+    const token = localStorage.getItem('YourToken')
+    const response = await axios.get('/Blog', { headers: { "authorization": `Bearer ${token}` } })
+    return Promise.resolve(response.data)
   } catch (error) {
     return Promise.reject(error)
   }
