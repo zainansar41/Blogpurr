@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import './profile.css'
 import BlogWriteBTN from '../../components/blogwriteBTN/BlogWriteBTN'
+import Blog from '../../components/Blog/Blog'
 
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import useFetch from '../../hooks/fetch.hook'
 import { toast, Toaster } from 'react-hot-toast'
 import { updateProfile, fetchBlog } from '../../helpers/verify'
+
 
 
 
@@ -102,6 +104,7 @@ export default function Profile() {
             </div>
 
             <div className="writtenBlog">
+                <Blog />
             </div>
 
         </>

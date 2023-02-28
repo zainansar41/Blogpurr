@@ -9,7 +9,6 @@ axios.defaults.baseURL = ENV.LINK
 export async function verifyPassword(credentials) {
   try {
     const response = await axios.post(`/login`, credentials);
-    console.log(response.data.token);
     localStorage.setItem('YourToken', response.data.token)
     return Promise.resolve(response.data);
   } catch (error) {
