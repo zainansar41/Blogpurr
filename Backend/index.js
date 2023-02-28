@@ -9,19 +9,19 @@ import './handlers/cloudinary.js'
 const port = 8000;
 
 const app = express();
-app.use(express.json())
+app.use(express.json({limit:'10mb'}))
 app.use(cors())
 app.use(morgan('tiny'))
 app.disable('x-powered-by')
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(bodyParser.json({ limit: '10mb', type: 'application/json' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false, parameterLimit: 100000 }));
 app.get('/', (req, res) => {
     res.send("Home Get request")
 })
-app.use('/',router)
+app.use('/', router)
 
-
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`http://localhost:${port}`);
 });
+server.timeout = 300000;

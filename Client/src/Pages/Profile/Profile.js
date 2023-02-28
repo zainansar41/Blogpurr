@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import useFetch from '../../hooks/fetch.hook'
 import { toast, Toaster } from 'react-hot-toast'
-import { updateProfile, fetchBlog } from '../../helpers/verify'
+import { updateProfile } from '../../helpers/verify'
 
 
 
@@ -17,8 +17,6 @@ import { updateProfile, fetchBlog } from '../../helpers/verify'
 export default function Profile() {
 
     const navigate = useNavigate()
-    const [blog, setBlog] = useState()
-
     const [{ isLoading, apiData, serverError }] = useFetch()
 
 
@@ -47,11 +45,6 @@ export default function Profile() {
         }
     })
 
-    useEffect(() => {
-        fetchBlog().then((result => {
-            setBlog(result)
-        }));
-    }, [])
 
     return (
         <>
@@ -103,9 +96,7 @@ export default function Profile() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus necessitatibus aspernatur in repellendus dolore dolores quia quisquam sit, praesentium id ut accusamus nemo officiis veniam aut dignissimos et nam ipsam?
             </div>
 
-            <div className="writtenBlog">
-                <Blog />
-            </div>
+            <Blog/>
 
         </>
     )

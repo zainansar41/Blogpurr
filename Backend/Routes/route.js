@@ -3,7 +3,6 @@ import * as controller from '../controllers/User.js'
 import * as blogCon from '../controllers/blog.js'
 import auth from '../middleware/auth.js'
 import upload from '../handlers/multer.js'
-
 const router = Router()
 
 
