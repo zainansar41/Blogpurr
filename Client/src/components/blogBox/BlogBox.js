@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import './blogbox.css'
 
 const addElipse = (str, limit)=>{
@@ -7,12 +8,13 @@ const addElipse = (str, limit)=>{
 
 
 export default function BlogBox(props) {
+    const navigate = useNavigate()
     const {blog} = props
     const div = document.createElement('div');
     div.innerHTML = blog.content.S;
     const firstParagraphText = div.querySelector('p').textContent;
   return (
-    <div className="blog_box">
+    <div className="blog_box" onClick={() => navigate(`/showBlog/${blog.blogID.S}`)}>
         <div className="blog_box_image">
             <img src={blog.Images.L[0].S} alt="" />
         </div>

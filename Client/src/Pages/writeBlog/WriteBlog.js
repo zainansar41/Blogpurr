@@ -103,7 +103,7 @@ export default function WriteBlog() {
                         </div>
                         <div className="category_input">
                             <label className='label' htmlFor="category">Category</label>
-                            <select id='category' name="category" value={category} onChange={(e) => { setCategory(e.target.value) }} required>
+                            <select id='category' name="category" value={category} onChange={(e) => { setCategory(e.target.value) }}>
                                 <option value="personal">Personal Blog</option>
                                 <option value="food">Food Blog</option>
                                 <option value="fashion">Fashion Blog</option>
@@ -113,7 +113,7 @@ export default function WriteBlog() {
                         </div>
                         <div className="category_input">
                             <label className='label' htmlFor="type">Content</label>
-                            <select id='type' name="type" value={type} onChange={(e) => { settype(e.target.value) }} required>
+                            <select id='type' name="type" value={type} onChange={(e) => { settype(e.target.value) }} >
                                 <option value="post">Blog Post</option>
                                 <option value="review">Product Review</option>
                             </select>

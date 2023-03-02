@@ -128,7 +128,8 @@ form .button input:hover {
     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
 }
 .div{
-    position: fixed;
+    position: absolute;
+    z-index: 99;
     right: 40px;
     top: 120px;
 
@@ -160,6 +161,7 @@ form .button input:hover {
 
 .addblock {
     margin: 30px;
+    margin-bottom: 80px;
 }
 
 

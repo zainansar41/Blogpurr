@@ -13,6 +13,8 @@ router.route('/getData').get(auth,controller.getUserData)
 router.route('/updateUser').put(auth,controller.updateUser)
 router.route('/addBlog').post(auth,upload.array('file'),blogCon.addblog)
 router.route('/Blog').get(auth,blogCon.fetchblog)
+router.route('/getBlog/:id').get(blogCon.fetchSingleBlog)//user with useraname
+
 
 
 export default router

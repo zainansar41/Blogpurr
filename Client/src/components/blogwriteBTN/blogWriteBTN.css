@@ -1,4 +1,5 @@
 .continue-application {
+    z-index: 999999;
     --color: #fff;
     --background: #404660;
     --background-hover: #3A4059;

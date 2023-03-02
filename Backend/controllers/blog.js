@@ -83,7 +83,6 @@ export async function fetchblog(req, res) {
     try {
         const { useremail } = req.user;
         if (useremail) {
-            console.log(useremail);
             const command = new ScanCommand({
                 TableName: TABLE_NAME,
                 FilterExpression: "useremail = :e",
@@ -93,7 +92,12 @@ export async function fetchblog(req, res) {
             });
             try {
                 const result = await client.send(command)
-                res.send(result.Items)
+                if (result.Count > 0) {
+                    res.send(result.Items)
+                }
+                else{
+                    res.send({msg:"no blog found"})
+                }
             } catch (error) {
                 res.send({ error: "error in recieving" })
             }
@@ -105,4 +109,27 @@ export async function fetchblog(req, res) {
     } catch (error) {
         res.send({ error: "error in api" })
     }
+}
+
+export async function fetchSingleBlog(req, res){
+    try {
+        const {id} = req.params
+        console.log(id);
+        const command = new ScanCommand({
+            TableName:TABLE_NAME,
+            FilterExpression:"blogID = :id",
+            ExpressionAttributeValues:{
+                ":id":{ S: id },
+            }
+        })
+
+        client.send(command).then((result)=>{
+            res.send(result.Items)
+        })
+        .catch(err=>{res.send({error:"Error in Loading Blog"})})
+        
+    } catch (error) {
+        res.send({error})
+    }
+
 }

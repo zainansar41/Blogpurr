@@ -58,8 +58,17 @@ export async function fetchBlog() {
   try {
     const token = localStorage.getItem('YourToken')
     const response = await axios.get('/Blog', { headers: { "authorization": `Bearer ${token}` } })
-    console.log(response.data);
     return Promise.resolve(response.data)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
+export async function fetchSingleBlog(id){
+  try {
+    const response = await axios.get(`/getBlog/${id}`)
+    return Promise.resolve(response.data)
+
   } catch (error) {
     return Promise.reject(error)
   }
