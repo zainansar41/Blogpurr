@@ -5,18 +5,23 @@ import './blog.css'
 import { Link } from 'react-router-dom';
 
 export default function Blog() {
-    const [blog, setBlog] = useState();
+    const [blog, setBlog] = useState([]);
 
     useEffect(() => {
         fetchBlog().then((result) => {
             setBlog(result);
-        });
+            
+        }).catch(error => {
+            console.log(error);
+          })
+          .finally(() => {
+            console.log(blog);
+          });;
     }, []);
-
     return (
         <div className="blog_com">
-            {Array.isArray(blog) ? blog.map((blog) => {
-                return <BlogBox blog={blog} />
+            {Array.isArray(blog) ? blog.map((item) => {
+                return <BlogBox blog={item} />
             }) : null}
         </div>
     );

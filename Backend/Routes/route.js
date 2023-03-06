@@ -17,4 +17,5 @@ router.route('/getBlog/:id').get(blogCon.fetchSingleBlog)//user with useraname
 
 
 
+
 export default router

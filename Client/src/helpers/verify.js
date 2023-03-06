@@ -67,9 +67,12 @@ export async function fetchBlog() {
 export async function fetchSingleBlog(id){
   try {
     const response = await axios.get(`/getBlog/${id}`)
+    // console.log(response.data);
     return Promise.resolve(response.data)
 
   } catch (error) {
     return Promise.reject(error)
   }
 }
+
+

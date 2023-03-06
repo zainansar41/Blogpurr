@@ -1,0 +1,51 @@
+.content{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content_div{
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin-left: 20px;
+}
+.blog_content{
+    width: calc(100% - 200px);
+}
+.image{
+    margin: 50px 0;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.ads{
+    width:300px
+}
+
+.details{
+    display: flex;
+    margin: 10px 20px;
+}
+.mail{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+ .mail a{
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+
+@media (max-width:700px) {
+    .content_div{
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+    .blog_content{
+        width: 100%;
+    }
+    .ads{
+        width: 100%;
+    }
+}

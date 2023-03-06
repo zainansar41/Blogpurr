@@ -135,6 +135,8 @@ export async function getUserData(req, res) {
     }
 }
 
+
+
 export async function updateUser(req, res) {
     try {
         const { useremail } = req.user;

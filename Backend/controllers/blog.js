@@ -65,7 +65,7 @@ export async function addblog(req, res) {
                         res.status(401).send({ error: "error in uploading blog! try later" })
                     })
             } catch (error) {
-                res.send({ error: "error in uploading files" })
+                res.status(401).send({ error: "error in uploading files" })
             }
 
 
@@ -114,7 +114,6 @@ export async function fetchblog(req, res) {
 export async function fetchSingleBlog(req, res){
     try {
         const {id} = req.params
-        console.log(id);
         const command = new ScanCommand({
             TableName:TABLE_NAME,
             FilterExpression:"blogID = :id",
