@@ -76,3 +76,25 @@ export async function fetchSingleBlog(id){
 }
 
 
+
+export async function getBlogHome(limit){
+  try {
+    console.log("getting Blogs");
+
+    const response = await axios.get(`/blogToShow/${limit}`)
+
+    return Promise.resolve(response.data)
+    
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
+
+export async function getRandomBlogs(){
+  try {
+    console.log("loading more Blogs");
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}

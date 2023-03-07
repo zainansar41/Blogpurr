@@ -10,6 +10,7 @@ import fashionBTN from '../../assets/fashionBTN.jpg'
 import foodBTN from '../../assets/foodBTN.jpg'
 import techBTN from '../../assets/techBTN.jpg'
 import travelBTN from '../../assets/travelBTN.jpg'
+import HomeBlog from '../../components/ShowBlogHome/HomeBlog'
 
 export default function Home() {
   return (
@@ -22,6 +23,8 @@ export default function Home() {
         <CatBTN IMAGE={techBTN} nameCat={"Technology"} tagCat={"See some Technology blogs"} />
         <CatBTN IMAGE={travelBTN} nameCat={"Travel"} tagCat={"See some Travel blogs"} />
       </div>
+      <h1 style={{marginLeft:"40px"}}>Blogs</h1>
+      <HomeBlog/>
 
     </>
   )

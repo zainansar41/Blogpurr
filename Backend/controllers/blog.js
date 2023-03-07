@@ -33,7 +33,6 @@ export async function addblog(req, res) {
                 saveIMG.push(result1.secure_url)
                 saveIMG.push(result2.secure_url)
                 const bID = uuidv4().toString();
-                console.log(bID);
                 const words = keywords && keywords.split(',') || []
                 const keywordList = words.map((word) => ({ S: word }));
                 const command = new PutItemCommand({
@@ -95,8 +94,8 @@ export async function fetchblog(req, res) {
                 if (result.Count > 0) {
                     res.send(result.Items)
                 }
-                else{
-                    res.send({msg:"no blog found"})
+                else {
+                    res.send({ msg: "no blog found" })
                 }
             } catch (error) {
                 res.send({ error: "error in recieving" })
@@ -111,24 +110,48 @@ export async function fetchblog(req, res) {
     }
 }
 
-export async function fetchSingleBlog(req, res){
+export async function fetchSingleBlog(req, res) {
     try {
-        const {id} = req.params
+        const { id } = req.params
         const command = new ScanCommand({
-            TableName:TABLE_NAME,
-            FilterExpression:"blogID = :id",
-            ExpressionAttributeValues:{
-                ":id":{ S: id },
+            TableName: TABLE_NAME,
+            FilterExpression: "blogID = :id",
+            ExpressionAttributeValues: {
+                ":id": { S: id },
             }
         })
 
-        client.send(command).then((result)=>{
+        client.send(command).then((result) => {
             res.send(result.Items)
         })
-        .catch(err=>{res.send({error:"Error in Loading Blog"})})
-        
+            .catch(err => { res.send({ error: "Error in Loading Blog" }) })
+
     } catch (error) {
-        res.send({error})
+        res.send({ error })
+    }
+
+}
+
+export const getBlogs = (req, res) => {
+    const {limit} = req.params;
+    console.log(limit);
+    const LIMIT = parseInt(limit)
+
+    try {
+        const params = new ScanCommand({
+            TableName:TABLE_NAME,
+            Limit:LIMIT
+        })
+
+        client.send(params).then(result=>{
+            res.status(200).send(result.Items)
+        }).catch(error =>{
+            console.log(error);
+            res.status(404).send({error})
+        })
+    } catch (error) {
+        console.error(error);
+        res.status(401).send(error)
     }
 
 }
