@@ -15,7 +15,7 @@ router.route('/addBlog').post(auth,upload.array('file'),blogCon.addblog)
 router.route('/Blog').get(auth,blogCon.fetchblog)
 
 router.route('/getBlog/:id').get(blogCon.fetchSingleBlog)
-router.route('/blogToShow/:limit').get(blogCon.getBlogs)
+router.route('/blogToShow').get(blogCon.getBlogs)
 
 
 

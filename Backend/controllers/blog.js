@@ -133,25 +133,20 @@ export async function fetchSingleBlog(req, res) {
 }
 
 export const getBlogs = (req, res) => {
-    const {limit} = req.params;
-    console.log(limit);
-    const LIMIT = parseInt(limit)
-
+    const params = {
+        TableName: TABLE_NAME
+    };
     try {
-        const params = new ScanCommand({
-            TableName:TABLE_NAME,
-            Limit:LIMIT
-        })
-
-        client.send(params).then(result=>{
-            res.status(200).send(result.Items)
-        }).catch(error =>{
-            console.log(error);
-            res.status(404).send({error})
-        })
+        const command = new ScanCommand(params);
+        client.send(command)
+            .then(result => {
+                console.log(result.LastEvaluatedKey);
+                res.status(200).send(result.Items);
+            })
+            .catch(error => {
+                res.status(404).send({ error });
+            });
     } catch (error) {
-        console.error(error);
-        res.status(401).send(error)
+        res.status(401).send(error);
     }
-
-}
+};

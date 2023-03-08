@@ -64,7 +64,7 @@ export async function fetchBlog() {
   }
 }
 
-export async function fetchSingleBlog(id){
+export async function fetchSingleBlog(id) {
   try {
     const response = await axios.get(`/getBlog/${id}`)
     // console.log(response.data);
@@ -77,21 +77,23 @@ export async function fetchSingleBlog(id){
 
 
 
-export async function getBlogHome(limit){
+export async function getBlogHome() {
   try {
     console.log("getting Blogs");
 
-    const response = await axios.get(`/blogToShow/${limit}`)
+    const response = await axios.get(`/blogToShow`)
+
+
 
     return Promise.resolve(response.data)
-    
+
   } catch (error) {
     return Promise.reject(error)
   }
 }
 
 
-export async function getRandomBlogs(){
+export async function getRandomBlogs() {
   try {
     console.log("loading more Blogs");
   } catch (error) {
