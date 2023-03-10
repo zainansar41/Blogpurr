@@ -11,6 +11,7 @@ import Home from './Pages/Home/Home';
 import Profile from './Pages/Profile/Profile';
 import WriteBlog from './Pages/writeBlog/WriteBlog'
 import ShowBlog from './Pages/showBlog/ShowBlog';
+import About from './Pages/AboutPage/About';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path='/' element={<Home/>} />
+          <Route exact path='/about' element={<About/>} />
           <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/profile' element={<Profile />} />

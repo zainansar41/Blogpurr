@@ -24,7 +24,7 @@ export default function Login() {
         onSubmit: async (values) => {
             if (values.email !== "" && isValidEmail(values.email)) {
               try {
-                let result = await verifyPassword(values);
+                let result =await verifyPassword(values);
                 if (result.error === "Email is not found ") {
                   toast.error("Email is not found ");
                 } else if (result.error === "incorrect password") {
