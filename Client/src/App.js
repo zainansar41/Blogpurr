@@ -12,6 +12,8 @@ import Profile from './Pages/Profile/Profile';
 import WriteBlog from './Pages/writeBlog/WriteBlog'
 import ShowBlog from './Pages/showBlog/ShowBlog';
 import About from './Pages/AboutPage/About';
+import Category from './Pages/CategoryPage/Category';
+import Service from './Pages/ServicePage/Service';
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
           <Route exact path='/profile' element={<Profile />} />
           <Route exact path='/writeblog' element={<WriteBlog />} />
           <Route exact path='/showBlog/:id' element={<ShowBlog />} />
+          <Route exact path='/category/:categoryname' element={<Category />} />
+          <Route exact path='/service/:type' element={<Service />} />
 
         </Routes>
       </Router>

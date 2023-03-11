@@ -16,6 +16,7 @@ router.route('/Blog').get(auth,blogCon.fetchblog)
 
 router.route('/getBlog/:id').get(blogCon.fetchSingleBlog)
 router.route('/blogToShow').get(blogCon.getBlogs)
+router.route('/blogByCategory/:category').get (blogCon.blogByCategory)
 
 
 

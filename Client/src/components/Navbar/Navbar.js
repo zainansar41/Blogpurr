@@ -33,24 +33,24 @@ export default function Navbar() {
                         <li><Link to={'/'}>Home</Link></li>
                         <li><Link to={'/about'}>About</Link></li>
                         <li>
-                            <Link to={'/'} class="desktop-link">Categories</Link>
+                            <Link to={''} class="desktop-link">Categories</Link>
                             <input type="checkbox" id="show-features" />
-                            <label for="show-features">Features</label>
+                            <label for="show-features">Categories</label>
                             <ul>
-                                <li><Link to={'/'}>Personal Blog</Link></li>
-                                <li><Link to={'/'}>Food Blog</Link></li>
-                                <li><Link to={'/'}>Fashion Blog</Link></li>
-                                <li><Link to={'/'}>Travel Blog</Link></li>
-                                <li><Link to={'/'}>Technology Blog</Link></li>
+                                <li><Link to={'/category/personal'}>Personal Blog</Link></li>
+                                <li><Link to={'/category/food'}>Food Blog</Link></li>
+                                <li><Link to={'/category/fashion'}>Fashion Blog</Link></li>
+                                <li><Link to={'/category/technology'}>Travel Blog</Link></li>
+                                <li><Link to={'/category/travel'}>Technology Blog</Link></li>
                             </ul>
                         </li>
                         <li>
-                            <Link to={'/'} class="desktop-link">Services</Link>
+                            <Link to={''} class="desktop-link">Services</Link>
                             <input type="checkbox" id="show-services" />
                             <label for="show-services">Services</label>
                             <ul>
-                                <li><Link to={'/'}>Blog posts</Link></li>
-                                <li><Link to={'/'}>Product reviews</Link></li>
+                                <li><Link to={'/service/post'}>Blog posts</Link></li>
+                                <li><Link to={'/service/review'}>Product reviews</Link></li>
                             </ul>
                         </li>
                         <li><Link to={token ? '/profile' : '/login'}>{token ? "Profile" : "Login"}</Link></li>

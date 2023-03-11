@@ -24,7 +24,6 @@ export async function addblog(req, res) {
     try {
         const { useremail } = req.user
         if (useremail) {
-            console.log("geting");
             let saveIMG = []
             const { category, content, description, heading, keywords, image1, image2, type } = req.body
             try {
@@ -150,3 +149,25 @@ export const getBlogs = (req, res) => {
         res.status(401).send(error);
     }
 };
+
+export const blogByCategory = (req, res) => {
+    try {
+        const { category } = req.params
+
+        const command = new ScanCommand({
+            TableName: TABLE_NAME,
+            FilterExpression: "category = :categoryName",
+            ExpressionAttributeValues: {
+                ":categoryName": { S: category },
+            }
+        })
+
+        client.send(command).then((result) => {
+            res.send(result.Items)
+        })
+            .catch(err => { res.send({ error: "Error in Loading Blog" }) })
+
+    } catch (error) {
+        res.status(404).send({ error })
+    }
+}
