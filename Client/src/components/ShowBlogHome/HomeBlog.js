@@ -51,7 +51,7 @@ export default function HomeBlog() {
                 <img src={item.Images.L[0].S} alt="" className="imageHome" />
               </div>
               <div className="contentBlogH">
-                <h2 className="headingHome">{item.heading.S}</h2>
+                <h2 className="headingHome">{addElipse(item.heading.S)}</h2>
                 <div className="para">{togetpara(item.content.S)}</div>
               </div>
             </div>
