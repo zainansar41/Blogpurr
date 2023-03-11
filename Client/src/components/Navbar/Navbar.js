@@ -40,8 +40,8 @@ export default function Navbar() {
                                 <li><Link to={'/category/personal'}>Personal Blog</Link></li>
                                 <li><Link to={'/category/food'}>Food Blog</Link></li>
                                 <li><Link to={'/category/fashion'}>Fashion Blog</Link></li>
-                                <li><Link to={'/category/technology'}>Travel Blog</Link></li>
-                                <li><Link to={'/category/travel'}>Technology Blog</Link></li>
+                                <li><Link to={'/category/travel'}>Travel Blog</Link></li>
+                                <li><Link to={'/category/technology'}>Technology Blog</Link></li>
                             </ul>
                         </li>
                         <li>

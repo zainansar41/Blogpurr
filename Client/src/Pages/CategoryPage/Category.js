@@ -17,7 +17,7 @@ const togetpara = (content) => {
     div.innerHTML = content;
     const firstParagraphText = div.querySelector('p').textContent;
 
-    return addElipse(firstParagraphText, 400);
+    return addElipse(firstParagraphText, 300);
 };
 
 export default function Category() {
