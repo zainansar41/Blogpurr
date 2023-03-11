@@ -1,0 +1,179 @@
+.service_page_heading {
+    padding-top: 90px;
+    text-transform: capitalize;
+}
+
+.service_page_heading h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.blogs_map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.Blog_can {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 90%;
+    margin-bottom: 50px;
+    width: 800px;
+    background-color: #EEEEEE;
+    border-radius: 10px;
+    transition: .5s all ease-in-out;
+    cursor: pointer;
+
+}
+
+.Blog_can:nth-child(even) {
+    flex-direction: row-reverse;
+
+}
+
+.Blog_can:nth-child(even) .Blog_can_image {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+}
+
+.Blog_can:nth-child(even) .Blog_can_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.Blog_can:nth-child(odd) .Blog_can_image {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+}
+
+.Blog_can:nth-child(odd) .Blog_can_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.Blog_can_content {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000;
+    margin-left: 20px;
+}
+
+.Blog_can:nth-child(odd) .Blog_can_content {
+    margin-left: 0px;
+    margin-right: 20px;
+}
+
+.Blog_can_heading {
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.Blog_can_para {
+    text-align: left;
+}
+
+@media (max-width:850px) {
+    .Blog_can {
+        width: 700px;
+
+    }
+
+    .Blog_can .Blog_can_image {
+        width: 300px;
+        height: 350px;
+    }
+
+    .Blog_can_content,
+    .Blog_can_content:nth-child(even){
+        width: 300px;
+        height: 350px;
+    }
+}
+
+@media (max-width:750px) {
+
+    .Blog_can,
+    .Blog_can:nth-child(even) {
+        width: 600px;
+        flex-direction: column;
+
+    }
+
+
+    .Blog_can:nth-child(odd) .Blog_can_image,
+    .Blog_can:nth-child(even) .Blog_can_image {
+        width: 100%;
+        height: 250px;
+        border-top-left-radius: 10px;
+        border-radius: 10px;
+
+    }
+
+    .Blog_can .Blog_can_content {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .Blog_can_content:nth-child(even),
+    .Blog_can_content:nth-child(odd) {
+        width: 100%;
+        height: auto;
+    }
+
+    .Blog_can_content:nth-child(odd) .Blog_can_content,
+    .Blog_can_content:nth-child(even) .Blog_can_content {
+        width: 90%;
+        height: auto;
+        margin: auto;
+    }
+    
+
+}
+
+@media (max-width:640px) {
+    .Blog_can,
+    .Blog_can:nth-child(even){
+        width: 500px;
+    }
+}
+@media (max-width:530px) {
+    .Blog_can,
+    .Blog_can:nth-child(even){
+        width: 400px;
+    }
+}
+@media (max-width:430px) {
+    .Blog_can,
+    .Blog_can:nth-child(even){
+        width: 330px;
+    }
+}
+

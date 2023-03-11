@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar/Navbar'
 
 import { useParams, useNavigate } from 'react-router-dom';
 import { getBlogByCategory } from '../../helpers/verify'
-
+ 
 
 
 const addElipse = (str, limit) => {
