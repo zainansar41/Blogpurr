@@ -171,3 +171,31 @@ export const blogByCategory = (req, res) => {
         res.status(404).send({ error })
     }
 }
+
+export const blogByService = (req, res) => {
+    try {
+        const { typeOfBlog } = req.params
+
+        const command = new ScanCommand({
+            TableName: TABLE_NAME,
+            FilterExpression: "#t = :typeName",
+            ExpressionAttributeNames: {
+                "#t": "type",
+            },
+            ExpressionAttributeValues: {
+                ":typeName": { S: typeOfBlog },
+            }
+        })
+
+        client.send(command).then((result) => {
+            res.send(result.Items)
+        })
+            .catch(err => { 
+                console.log(err);
+                res.send({ error: "Error in Loading Blog" })
+             })
+
+    } catch (error) {
+        res.status(404).send({ error })
+    }
+}

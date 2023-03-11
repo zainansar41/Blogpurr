@@ -106,7 +106,18 @@ export async function getBlogByCategory(category) {
   try {
     console.log(category);
     const response = await axios.get(`/blogByCategory/${category}`)
-    
+
+    return Promise.resolve(response.data)
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
+
+export async function getBlogByService(type) {  
+  try {
+    console.log(type);
+    const response = await axios.get(`/blogByService/${type}`)
     return Promise.resolve(response.data)
   } catch (error) {
     return Promise.reject(error)
