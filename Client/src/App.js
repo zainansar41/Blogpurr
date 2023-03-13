@@ -14,6 +14,7 @@ import ShowBlog from './Pages/showBlog/ShowBlog';
 import About from './Pages/AboutPage/About';
 import Category from './Pages/CategoryPage/Category';
 import Service from './Pages/ServicePage/Service';
+import SearchPage from './Pages/SearchPage/SearchPage';
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
           <Route exact path='/showBlog/:id' element={<ShowBlog />} />
           <Route exact path='/category/:categoryname' element={<Category />} />
           <Route exact path='/service/:type' element={<Service />} />
-
+          <Route exact path='/search/:search' element={<SearchPage />} />
         </Routes>
       </Router>
     </>

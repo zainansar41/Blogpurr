@@ -190,12 +190,49 @@ export const blogByService = (req, res) => {
         client.send(command).then((result) => {
             res.send(result.Items)
         })
-            .catch(err => { 
+            .catch(err => {
                 console.log(err);
                 res.send({ error: "Error in Loading Blog" })
-             })
+            })
 
     } catch (error) {
         res.status(404).send({ error })
+    }
+}
+
+
+export const blogSearch = (req, res) => {
+    try {
+        const { search } = req.params;
+        console.log(search);
+
+
+        const command = new ScanCommand({
+            TableName:TABLE_NAME,
+            FilterExpression: "contains(#key, :search)",
+            ExpressionAttributeNames: {
+                "#key": "keywords",
+            },
+            ExpressionAttributeValues: {
+                ":search": { S: search },
+            }
+            
+        })
+        client.send(command)
+            .then(result => {
+                if (result.Count > 0) {
+                    res.status(200).send(result.Items);
+                }
+                else {
+                    res.send({error:"no result Found"})
+                }
+            })
+            .catch(error => {
+                res.status(404).send({ error });
+            });
+
+
+    } catch (error) {
+        res.send({ error })
     }
 }

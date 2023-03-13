@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
 
 export default function Navbar() {
+
+    const [search, setSearch] = useState('');
+    const navigate = useNavigate();
+
     const token = localStorage.getItem('YourToken')
     useEffect(() => {
         const checkTokenInterval = setInterval(() => {
@@ -58,8 +62,17 @@ export default function Navbar() {
                 </div>
                 <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
                 <form action="#" class="search-box">
-                    <input type="text" placeholder="Type Something to Search..." required style={{ marginTop: -5 }} />
-                    <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+                    <input type="text" placeholder="Type Something to Search..." value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        required style={{ marginTop: -5 }} />
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            navigate(`/search/${search}`);
+                            
+                        }
+                        }
+                        type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
                 </form>
             </nav>
         </div>
